@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islamic Fun Facts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+            margin: 0;
+        }
+        header {
+            background-color: #009688;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #00796b;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 700;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .intro, .fact-section, .calendar, .palestine {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .intro h1, .fact-section h2, .calendar h2, .palestine h2 {
+            color: #009688;
+        }
+        .fact {
+            font-size: 18px;
+            color: #555;
+            margin: 10px 0;
+        }
+        .calendar {
+            font-size: 16px;
+        }
+        .palestine {
+            font-size: 18px;
+            color: #00796b;
+        }
+        .palestine a {
+            color: #009688;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        button {
+            background-color: #009688;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #00796b;
+        }
+        footer {
+            background-color: #009688;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Welcome to Islamic Fun Facts
+    </header>
+    <nav>
+        <a href="#fun-facts">Daily Fun Facts</a>
+        <a href="#calendar">Islamic Calendar</a>
+        <a href="#palestine">Support for Palestinians</a>
+    </nav>
+    <div class="container">
+        <div class="intro">
+            <h1>Discover Fascinating Facts About Islam Every Day</h1>
+            <p>Our mission is to educate and inform people about the rich history, culture, and traditions of Islam through fun and interesting facts. Explore our daily facts, learn about the Islamic calendar, and find out how you can support the Palestinian cause.</p>
+        </div>
+
+        <div id="fun-facts" class="fact-section">
+            <h2>Daily Fun Facts</h2>
+            <div class="fact" id="fact1">Loading fact 1...</div>
+            <div class="fact" id="fact2">Loading fact 2...</div>
+            <div class="fact" id="fact3">Loading fact 3...</div>
+            <button onclick="displayFacts()">Show Today's Fun Facts</button>
+        </div>
+
+        <div id="calendar" class="calendar">
+            <h2>Islamic Calendar</h2>
+            <div id="islamic-date">Loading Islamic date...</div>
+        </div>
+
+        <div id="palestine" class="palestine">
+            <h2>Support for Palestinians</h2>
+            <p>Learn how you can help and support the Palestinian cause.</p>
+            <p><a href="https://www.palestinecampaign.org" target="_blank">Visit Palestine Campaign</a></p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Islamic Fun Facts
+    </footer>
+
+    <script>
+        const facts = [
+            "Islam is the world's second-largest religion.",
+            "The Quran is the holy book of Islam, revealed to Prophet Muhammad over 23 years.",
+            "Muslims pray five times a day facing the Kaaba in Mecca.",
+            "The month of Ramadan is a time for fasting, prayer, and reflection.",
+            "Hajj is a pilgrimage to Mecca that Muslims must perform at least once in their lifetime if able.",
+            "Islamic art often features intricate geometric patterns and calligraphy.",
+            "Muslim scholars made significant contributions to mathematics, astronomy, and medicine.",
+            "The word 'Islam' means 'submission to the will of God'.",
+            "There are over 1.8 billion Muslims worldwide.",
+            "The Prophet Muhammad is considered the last prophet in Islam."
+        ];
+
+        function displayFacts() {
+            const today = new Date();
+            const factIndices = [
+                today.getDate() % facts.length,
+                (today.getDate() + 1) % facts.length,
+                (today.getDate() + 2) % facts.length
+            ];
+            document.getElementById('fact1').innerText = facts[factIndices[0]];
+            document.getElementById('fact2').innerText = facts[factIndices[1]];
+            document.getElementById('fact3').innerText = facts[factIndices[2]];
+        }
+
+        function displayIslamicDate() {
+            const today = new Date();
+            const hijri = new Intl.DateTimeFormat('en-TN-u-ca-islamic', { day: 'numeric', month: 'long', year: 'numeric' }).format(today);
+            document.getElementById('islamic-date').innerText = hijri;
+        }
+
+        window.onload = function() {
+            displayFacts();
+            displayIslamicDate();
+        };
+    </script>
+</body>
+</html>
